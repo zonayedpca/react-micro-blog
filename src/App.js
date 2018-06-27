@@ -47,7 +47,7 @@ class App extends Component {
     const { handleColorChange, handleSubmission, handleLove } = this;
 
     return (
-      <Router>
+      <Router basename="/react-micro-blog">
         <div className="App">
           <Header color={color} handleColorChange={handleColorChange} />
           <Content color={color} data={data} handleSubmission={handleSubmission} handleLove={handleLove} />
