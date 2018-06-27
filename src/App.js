@@ -9,23 +9,16 @@ import './App.css';
 import data from './data';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      color: '#0693e3',
-      data: data
-    }
-
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleSubmission = this.handleSubmission.bind(this);
-    this.handleLove = this.handleLove.bind(this);
+  state = {
+    color: '#0693e3',
+    data: data
   }
 
-  handleColorChange(color) {
+  handleColorChange = (color) => {
     this.setState({color});
   }
 
-  handleSubmission(id, name, post) {
+  handleSubmission = (id, name, post) => {
     let data  = this.state.data;
     post = {
       id,
@@ -36,7 +29,7 @@ class App extends Component {
     this.setState({data});
   }
 
-  handleLove(post) {
+  handleLove = (post) => {
     let data = this.state.data;
     data = data.map(singleData => singleData === post ? (post.love ? {id: post.id, author: post.author, body: post.body, love: false}:{id: post.id, author: post.author, body: post.body, love: true}) : singleData);
     this.setState({data});

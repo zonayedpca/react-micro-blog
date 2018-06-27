@@ -2,23 +2,18 @@ import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
 
 export default class TextArea extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: 'Zonayed Ahmed',
-      text: '',
-      allowed: 0
-    }
-
-    this.handleChange = this.handleChange.bind(this);
+  state = {
+    name: 'Zonayed Ahmed',
+    text: '',
+    allowed: 0
   }
 
-  handleChange(text) {
+  handleChange = (text) => {
     let allowed = text.length;
     this.setState({text, allowed});
   }
 
-  handleLocalSubmission(e) {
+  handleLocalSubmission = (e) => {
     e.preventDefault();
     const { name, text } = this.state;
     (text.length > 0 && text.length <= 240 ) ? this.props.handleSubmission(uuidv1(), name, text.trim()) & this.setState({text: '', allowed: 0}) : null;
