@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import { Link } from 'react-router-dom';
 
 import ColorPicker from './ColorPicker';
 
 import logo from '../logo.svg';
 
-export default({color, handleColorChange}) => {
-  return (
-    <header>
+class Header extends PureComponent {
+  render() {
+    const {color, handleColorChange} = this.props;
+    return (
+      <header>
       <div className="navbar">
         <ul>
           <li><Link style={{color}} to="/">Home</Link></li>
@@ -16,5 +18,9 @@ export default({color, handleColorChange}) => {
         </ul>
       </div>
     </header>
-  )
+    );
+  }
 }
+
+export default Header;
+
