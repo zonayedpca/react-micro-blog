@@ -7,6 +7,15 @@ export default class TextArea extends Component {
     text: '',
     allowed: 0
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.color !== nextProps.color) {
+      return true;
+    }
+    if (this.state !== nextState) {
+      return true;
+    }
+    return false;
+  }
 
   handleChange = (text) => {
     let allowed = text.length;
