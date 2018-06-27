@@ -16,7 +16,7 @@ export default class TextArea extends Component {
   handleLocalSubmission = (e) => {
     e.preventDefault();
     const { name, text } = this.state;
-    (text.length > 0 && text.length <= 240 ) ? this.props.handleSubmission(uuidv1(), name, text.trim()) & this.setState({text: '', allowed: 0}) : null;
+    (text.trim().length > 0 && text.trim().length <= 240 ) ? this.props.handleSubmission(uuidv1(), name, text.trim()) & this.setState({text: '', allowed: 0}) : null;
   }
 
   render() {
