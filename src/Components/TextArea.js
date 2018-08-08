@@ -7,8 +7,9 @@ export default class TextArea extends Component {
     text: '',
     allowed: 0
   }
+
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.color !== nextProps.color) {
+    if (this.props.color !== nextProps.color || this.props.auth !== nextProps.auth) {
       return true;
     }
     if (this.state !== nextState) {
@@ -29,8 +30,10 @@ export default class TextArea extends Component {
   }
 
   render() {
-    const { color } = this.props;
+    const { color, auth } = this.props;
     const { name, allowed, text } = this.state;
+    
+    if(auth === false) return <p>You must be logged in to do that!</p>
 
     return (
       <form>

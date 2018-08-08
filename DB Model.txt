@@ -1,0 +1,60 @@
+Two Schema: 
+1. PostSchema
+2. UserSchema
+===========================
+UserSchema
+---------------------------
+users: [
+   ...
+   {
+      id: ID,
+      profile_id: GOOGLE_PROFILE_ID,
+      username: USERNAME,
+      fullName: FULLNAME
+   }
+   ...
+]
+
+PostSchema
+---------------------------
+posts: [
+   ...
+   {
+      id: ID,
+      author: #associated_with_UserSchema,
+      body: POST_CONTENT,
+      loved: [GOOGLE_PROFILE_IDs]
+   }
+   ...
+]
+===========================
+Demo UserSchema
+---------------------------
+users: [
+   ...
+   {
+      id: 2383984749874,
+      profile_id: 439847945793485,
+      username: 'zonayedpca',
+      fullName: 'Zonayed Ahmed'
+   }
+   ...
+]
+
+Demo PostSchema
+----------------------------
+posts: [
+   ...
+   {
+      id: 54987593579457,
+      author: {
+         id: 2383984749874,
+         profile_id: 439847945793485,
+         username: 'zonayedpca',
+         fullName: 'Zonayed Ahmed'
+      },
+      body: 'aut et excepturi dicta laudantium sint #rerum nihil laudantium et at a neque minima officia et similique libero et commodi voluptate qui',
+      loved: [..., 439847945793485, ...]
+   }
+   ...
+]

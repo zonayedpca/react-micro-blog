@@ -6,12 +6,18 @@ import Content from './Components/Content';
 import Footer from './Components/Footer';
 
 import './App.css';
-import data from './data';
+import data from './data/data';
 
 class App extends Component {
   state = {
     color: '#0693e3',
+    auth: false,
     data: data
+  }
+
+  componentDidMount() {
+    // True for logged in version, false for not logged in version
+    this.setState({auth: true});
   }
 
   handleColorChange = (color) => {
@@ -36,14 +42,14 @@ class App extends Component {
   }
 
   render() {
-    const { color, data } = this.state;
+    const { color, auth, data } = this.state;
     const { handleColorChange, handleSubmission, handleLove } = this;
 
     return (
       <Router basename="/react-micro-blog">
         <div className="App">
-          <Header color={color} handleColorChange={handleColorChange} />
-          <Content color={color} data={data} handleSubmission={handleSubmission} handleLove={handleLove} />
+          <Header color={color} auth={auth} handleColorChange={handleColorChange} />
+          <Content color={color} auth={auth} data={data} handleSubmission={handleSubmission} handleLove={handleLove} />
           <Footer color={color} />
         </div>
       </Router>
